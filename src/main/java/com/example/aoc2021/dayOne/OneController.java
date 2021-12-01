@@ -12,12 +12,12 @@ public class OneController {
     }
 
     @GetMapping("one/firstPart")
-    public String firstPart() {
+    public int firstPart() {
         return service.firstPart();
     }
 
     @GetMapping("one/secondPart")
-    public String secondPart() {
+    public int secondPart() {
         return service.secondPart();
     }
 }
