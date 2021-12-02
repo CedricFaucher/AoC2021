@@ -10,7 +10,7 @@ public class OneService {
     private final List<Integer> listOfDepths;
 
     public OneService() {
-        listOfDepths = GetListFromFileUtils.getListOfIntegers("/Users/cfaucher/Dev/AoC2021/src/main/java/com/example/aoc2021/dayOne/OneList");
+        listOfDepths = GetListFromFileUtils.getListOfIntegers("/dayOne/OneList");
     }
 
     public int firstPart() {

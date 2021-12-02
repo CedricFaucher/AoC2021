@@ -8,14 +8,30 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GetListFromFileUtils {
+    public static final String BASEPATH = "/Users/cfaucher/Dev/AoC2021/src/main/java/com/example/aoc2021";
+
     public static List<Integer> getListOfIntegers(String path) {
         try {
-            Scanner scanner = new Scanner(new File(path));
-            List<Integer> listOfDepths = new ArrayList<>();
+            Scanner scanner = new Scanner(new File(BASEPATH + path));
+            List<Integer> integerList = new ArrayList<>();
             while (scanner.hasNextInt()) {
-                listOfDepths.add(scanner.nextInt());
+                integerList.add(scanner.nextInt());
             }
-            return listOfDepths;
+            return integerList;
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found!");
+        }
+        return Collections.emptyList();
+    }
+
+    public static List<String> getListOfString(String path) {
+        try {
+            Scanner scanner = new Scanner(new File(BASEPATH + path));
+            List<String> stringList = new ArrayList<>();
+            while (scanner.hasNextLine()) {
+                stringList.add(scanner.nextLine());
+            }
+            return stringList;
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
