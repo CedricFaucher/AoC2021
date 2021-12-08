@@ -1,22 +1,22 @@
-package com.example.aoc2021.daySeven;
+package com.example.aoc2021.dayEight;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class SevenController {
-    private final SevenService service;
+public class EightController {
+    private final EightService service;
 
-    public SevenController(SevenService service) {
+    public EightController(EightService service) {
         this.service = service;
     }
 
-    @GetMapping("seven/firstPart")
+    @GetMapping("eight/firstPart")
     public int firstPart() {
         return service.firstPart();
     }
 
-    @GetMapping("seven/secondPart")
+    @GetMapping("eight/secondPart")
     public long secondPart() {
         return service.secondPart();
     }
