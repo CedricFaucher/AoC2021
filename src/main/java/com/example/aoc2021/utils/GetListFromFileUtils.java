@@ -50,4 +50,22 @@ public class GetListFromFileUtils {
         }
         return Collections.emptyList();
     }
+
+    public static List<List<Integer>> getListOfIntegerInLine(String path) {
+        List<List<Integer>> returnedList = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(new File(BASEPATH + path));
+            while (scanner.hasNextLine()) {
+                List<Integer> list = new ArrayList<>();
+                String line = scanner.nextLine();
+                for (int i = 0; i < line.length(); i++) {
+                    list.add(Character.getNumericValue(line.charAt(i)));
+                }
+                returnedList.add(list);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found!");
+        }
+        return returnedList;
+    }
 }
