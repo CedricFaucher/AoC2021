@@ -51,6 +51,25 @@ public class GetListFromFileUtils {
         return Collections.emptyList();
     }
 
+    public static List<List<Integer>> getListOfIntegerCommaSeparatedAndWithLines(String path) {
+        try {
+            Scanner scanner = new Scanner(new File(BASEPATH + path));
+            List<List<Integer>> result = new ArrayList<>();
+            List<String> strings = new ArrayList<>();
+            while (scanner.hasNextLine()) {
+                strings.add(scanner.nextLine());
+            }
+            List<String[]> split = strings.stream().map(s -> s.split(",")).collect(Collectors.toList());
+            for (String[] s : split) {
+                result.add(Arrays.stream(s).map(Integer::parseInt).collect(Collectors.toList()));
+            }
+            return result;
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found!");
+        }
+        return Collections.emptyList();
+    }
+
     public static List<List<Integer>> getListOfIntegerInLine(String path) {
         List<List<Integer>> returnedList = new ArrayList<>();
         try {
@@ -67,5 +86,28 @@ public class GetListFromFileUtils {
             System.out.println("File not found!");
         }
         return returnedList;
+    }
+
+    public static List<List<Integer>> getListOfCommands(String path) {
+        try {
+            Scanner scanner = new Scanner(new File(BASEPATH + path));
+            List<List<Integer>> result = new ArrayList<>();
+            List<String> strings = new ArrayList<>();
+            while (scanner.hasNextLine()) {
+                strings.add(scanner.nextLine());
+            }
+            for (String s : strings) {
+                String[] split = s.split("=");
+                if (s.charAt(11) == 'y') {
+                    result.add(List.of(0, Integer.parseInt(split[1])));
+                } else {
+                    result.add(List.of(Integer.parseInt(split[1]), 0));
+                }
+            }
+            return result;
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found!");
+        }
+        return Collections.emptyList();
     }
 }
